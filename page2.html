@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function saveData() {
+            const name = document.querySelector('#name').value;
+            const day = document.querySelector('.birthday-group input:nth-child(1)').value;
+            const month = document.querySelector('.birthday-group input:nth-child(2)').value;
+            const year = document.querySelector('.birthday-group input:nth-child(3)').value;
+            const email = document.querySelector('#email').value;
+            const noEmailChecked = document.querySelector('#no-email').checked;
+
+            const birthday = `${day}/${month}/${year}`;
+
+            // Clear all error messages
+            document.querySelectorAll('.error').forEach(error => error.style.display = 'none');
+
+            let hasError = false;
+
+            if (!name) {
+                document.querySelector('#name-error').style.display = 'block';
+                hasError = true;
+            }
+
+            if (!day || !month || !year) {
+                document.querySelector('#birthday-error').style.display = 'block';
+                hasError = true;
+            }
+
+            if (!email && !noEmailChecked) {
+                document.querySelector('#email-error').style.display = 'block';
+                hasError = true;
+            }
+
+            if (hasError) {
+                return;
+            }
+
+            // Save data to localStorage
+            localStorage.setItem('name', name);
+            localStorage.setItem('birthday', birthday);
+            localStorage.setItem('email', noEmailChecked ? 'No email address' : email);
+
+            // Redirect to Page 3
+            window.location.href = "page3.html";
+        }
+    </script>
+</head>
+
+<body>
+
+    <img id="logo" src="mulah_logo.png" alt="">
+
+    <h2>Registration</h2>
+
+    <p class="subtext">Please fill up your details.</p>
+
+    <form onsubmit="event.preventDefault(); saveData();">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Enter Name">
+        <p class="error" id="name-error" style="display: none;">*Please insert a name.</p>
+
+        <label for="birthday">Birthday</label>
+        <div class="birthday-group">
+            <input type="text" placeholder="DD" maxlength="2">
+            <input type="text" placeholder="MM" maxlength="2">
+            <input type="text" placeholder="YYYY" maxlength="4">
+        </div>
+        <p class="error" id="birthday-error" style="display: none;">*Please insert your birthday.</p>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Email Address">
+        <p class="error" id="email-error" style="display: none;">*Please insert a valid email address.</p>
+
+        <div class="checkbox">
+            <input type="checkbox" id="no-email">
+            <label for="no-email">No email address</label>
+        </div>
+
+        <button type="submit">Continue</button>
+    </form>
+
+    <footer>
+        <p>Powered by <a href="https://www.mulahrewards.com">MulahRewards.com</a></p>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 1</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        function validateInput() {
+            const countryCode = document.querySelector('select').value;
+            const phoneNumber = document.querySelector('#phone-input').value;
+            const fullNumber = countryCode + phoneNumber;
+
+            if (fullNumber === "+60173527250") {
+                localStorage.setItem('phoneNumber', fullNumber);
+                window.location.href = "page2.html";
+            } else {
+                alert("Invalid phone number. Please enter the correct number.");
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <img id="logo" src="mulah_logo.png" alt="Logo">
+
+    <h1>Hello,<br>Welcome!</h1>
+
+    <div class="subtitle">Check Your Loyalty Points & Rewards</div>
+
+    <div class="input-group">
+        <select>
+            <option value="+60">+60</option>
+        </select>
+        <div class="input-wrapper">
+            <input type="text" id="phone-input" placeholder="Enter your mobile number" 
+                   oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+            <span class="check-icon">✔</span>
+        </div>
+    </div>
+
+    <button onclick="validateInput()">Check Loyalty Points</button>
+
+    
+    <footer>
+        <p>Powered by <a href="https://mulahrewards.com" target="_blank">MulahRewards.com</a></p>
+    </footer>
+    
+</body>
+
+</html>

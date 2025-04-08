@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 3</title>
+
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+           
+            const phoneNumber = localStorage.getItem('phoneNumber');
+            const name = localStorage.getItem('name');
+            const birthday = localStorage.getItem('birthday');
+            const email = localStorage.getItem('email');
+
+            
+            document.querySelector('#display-phone').textContent = phoneNumber || 'N/A';
+            document.querySelector('#display-name').textContent = name || 'N/A';
+            document.querySelector('#display-birthday').textContent = birthday || 'N/A';
+            document.querySelector('#display-email').textContent = email || 'N/A';
+        });
+    </script>
+</head>
+
+<body>
+
+    <img id="logo" src="mulah_logo.png" alt="Logo">
+
+    <h1>Your Info</h1>
+
+    <div class="details">
+        <p><strong>Phone Number:</strong> <span id="display-phone"></span></p>
+        <p><strong>Name:</strong> <span id="display-name"></span></p>
+        <p><strong>Birthday:</strong> <span id="display-birthday"></span></p>
+        <p><strong>Email:</strong> <span id="display-email"></span></p>
+    </div>
+
+    <button onclick="window.location.href='page1.html'">Go Page 1</button>
+    <button onclick="window.location.href='page2.html'">Go Page 2</button>
+
+    <footer>
+        <p>Powered by <a href="https://www.mulahrewards.com">MulahRewards.com</a></p>
+    </footer>
+
+</body>
+
+</html>
